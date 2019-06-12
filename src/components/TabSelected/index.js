@@ -6,8 +6,14 @@ class TabSelected extends React.Component {
     constructor() {
         super();
         this.state = {
-            activeIndex: 0
-        }
+            activeIndex: 0,
+            status: false,
+            inputVal: ''
+        };
+        this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+
+        this.myInput = React.createRef();
     }
 
     onActiveClick(val) {
@@ -24,9 +30,26 @@ class TabSelected extends React.Component {
     //     data: PropTypes.array
     // };
 
+
     static defaultProps = {
         title: '设置props默认值'
     };
+
+
+    handleClick() {
+        console.log(this.state, 'inputVal');
+        // this.myInput.current.focus();
+        this.setState({status: !this.state.status});
+    }
+
+    handleChange(e) {
+        const v = e.target.value;
+
+        // this.setState异步
+        this.setState((state, props) => {
+            return { inputVal: v, title: state.activeIndex + props.title };
+        });
+    }
 
     render() {
         const navList = this.props.data;
@@ -44,16 +67,36 @@ class TabSelected extends React.Component {
                 }
                 {
                     React.Children.map(this.props.children, function (item) {
-                        return <p> {item}</p>
+                        return <p style={{color: 'red', fontWeight: 'bold'}}> {item}</p>
                     })
                 }
-                <h2>{ this.props.title }</h2>
+
+                <button onClick={this.handleClick}>确定</button>
+                {
+                    this.state.status ? React.createElement('div', null, `${this.props.title}`, React.createElement('h2', {className: 'title'}, 'this is h2')) : ''
+                }
+                <input type="text" value={this.state.inputVal} onChange={this.handleChange}/>
             </div>
         )
     }
 }
 
+
+
+// proTypes 类型检验
+// optionalArray: PropTypes.array,
+//     optionalBool: PropTypes.bool,
+//     optionalFunc: PropTypes.func,
+//     optionalNumber: PropTypes.number,
+//     optionalObject: PropTypes.object,
+//     optionalString: PropTypes.string,
+//     optionalSymbol: PropTypes.symbol,
+
 TabSelected.propTypes = {
-    data: PropTypes.array
+    data: PropTypes.array.isRequired
+};
+
+TabSelected.defaultProps = {
+    title: 'set props'
 };
 export default TabSelected;

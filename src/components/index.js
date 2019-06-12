@@ -11,18 +11,18 @@ export default class component extends React.Component {
     constructor() {
         super();
         this.state = {
-            value: 'fanxiaotong',
+            value: 'init fanxiaotong',
             data: [{title: '首页', value: 0}, {title: '支撑系统', value: 1}, {title: '客户洞察', value: 2}],
         };
 
-        setTimeout(() => {
-            this.setState({
-                value: Math.random() * 100,
-                type: 1
-            });
-            ob.b = Math.random() * 100;
-            ob.a = 222333222;
-        })
+        // setTimeout(() => {
+        //     this.setState({
+        //         value: Math.random() * 100,
+        //         type: 1
+        //     });
+        //     ob.b = Math.random() * 100;
+        //     ob.a = 222333222;
+        // }, 4000)
     }
 
     render() {
@@ -51,20 +51,30 @@ export default class component extends React.Component {
             </div>
         )
     }
-    // componentWillMount() {
-    //     console.log('componentWillMount');
-    // }
-    // componentDidMount() {
-    //     console.log('componentDidMount');
-    // }
-    //
-    // componentWillUpdate(nextProps, nextState) {
-    //     console.log(nextProps, nextState);
-    //     console.log('componentWillUpdate');
-    // }
-    //
-    // componentDidUpdate(nextProps, nextState) {
-    //     console.log(nextProps, nextState);
-    //     console.log('componentDidUpdate')
-    // }
+    componentWillMount() {
+        console.log('componentWillMount');
+    }
+    componentDidMount() {
+        this.timeId = setInterval(() => {
+            this.setState({
+                value: 'update' + new Date()
+            })
+        }, 8000);
+
+        console.log('componentDidMount');
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        // nextProps, nextState 更新后的值
+        console.log(nextProps, nextState, 'componentWillUpdate');
+    }
+
+    componentDidUpdate(nextProps, nextState) {
+        // nextProps, nextState 更新前的值
+        console.log(nextProps, nextState, 'componentDidUpdate');
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timeId, '执行卸载');
+    }
 }

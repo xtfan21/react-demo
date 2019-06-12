@@ -1,9 +1,10 @@
 import React from "react";
 
 function FunctionCom(props) {
+    const { value } = props;
     return (
         <div>
-            {JSON.stringify(props)}
+            {value.toLocaleString()}
         </div>
     )
 }
