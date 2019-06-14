@@ -26,7 +26,7 @@ export default class component extends React.Component {
     }
 
     render() {
-        console.log('render===============');
+        console.log('render================');
         const { value, data } = this.state;
         return (
             <div>
@@ -51,15 +51,16 @@ export default class component extends React.Component {
             </div>
         )
     }
+
     componentWillMount() {
         console.log('componentWillMount');
     }
     componentDidMount() {
-        this.timeId = setInterval(() => {
-            this.setState({
-                value: 'update' + new Date()
-            })
-        }, 8000);
+        // this.timeId = setInterval(() => {
+        //     this.setState({
+        //         value: 'update' + new Date()
+        //     })
+        // }, 8000);
 
         console.log('componentDidMount');
     }
@@ -75,6 +76,6 @@ export default class component extends React.Component {
     }
 
     componentWillUnmount() {
-        clearInterval(this.timeId, '执行卸载');
+        // clearInterval(this.timeId, '执行卸载');
     }
 }

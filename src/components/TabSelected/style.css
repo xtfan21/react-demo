@@ -2,6 +2,7 @@
     width: 100%;
     height: 400px;
 }
+
 li {
     list-style: none;
     display: inline-block;
