@@ -3,6 +3,7 @@ import FunctionCom from './FunctionCom';
 import MemoCom from './MemoCom';
 import PureComponent from './PureComponent';
 import TabSelected from './TabSelected/index';
+import DropDown from './DropDown';
 
 const ob = {
     a: 11
@@ -25,6 +26,17 @@ export default class component extends React.Component {
         // }, 4000)
     }
 
+
+    onChangeDropDown() {
+        console.log('111');
+    }
+
+    changeDrop(val) {
+        this.setState({
+            value: val
+        })
+    }
+
     render() {
         console.log('render================');
         const { value, data } = this.state;
@@ -38,19 +50,28 @@ export default class component extends React.Component {
                 </FunctionCom>
 
                 <h3>MemoCom:</h3>
-                <MemoCom ob={ob} value={value}/>
+                <MemoCom ob={ob} value={value} />
 
                 <h3>PureComponent</h3>
                 <PureComponent ob={ob} />
 
                 <h3>tab切换组件</h3>
-                <TabSelected data={data}>
-                    <span>hello</span>
-                    <span>world</span>
-                </TabSelected>
+
+                {/*tab切换组件*/}
+                {
+                    !value ?
+                        <TabSelected data={data}>
+                            <span>hello</span>
+                            <span>world</span>
+                        </TabSelected> : ''
+                }
+
+                {/*下拉框组件*/}
+                <DropDown data={data} changeValue={(val) => this.changeDrop(val)}/>
             </div>
         )
     }
+
 
     componentWillMount() {
         console.log('componentWillMount');
@@ -61,7 +82,6 @@ export default class component extends React.Component {
         //         value: 'update' + new Date()
         //     })
         // }, 8000);
-
         console.log('componentDidMount');
     }
 
