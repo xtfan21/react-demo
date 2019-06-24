@@ -31,7 +31,6 @@ class MessageEntity extends React.Component {
 const Message = {
     entity(props) {
         const container = document.createElement('div');
-        // const messageInfo = document.getElementById('message-info');
         container.className = 'message-container';
         document.body.appendChild(container);
         ReactDOM.render(<MessageEntity container={container} {...props}/>, container);
