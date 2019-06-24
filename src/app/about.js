@@ -10,8 +10,12 @@ export default class About extends React.Component {
     render() {
         return (
             <div>
-                <ArticleList articleInfo={this.articleInfo}/>
+                <ArticleList articleInfo={this.articleInfo} articleRefs={el => this.list = el}/>
             </div>
         )
+    }
+
+    componentDidMount() {
+        console.log(this.list);
     }
 }

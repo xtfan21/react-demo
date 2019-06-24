@@ -1,0 +1,26 @@
+.message-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 450px;
+    z-index: 1400;
+}
+.message-notice {
+    width: 450px;
+    line-height: 18px;
+    margin-top: 1px;
+    overflow: hidden;
+    padding: 8px 14px 7px 20px;
+    font-size: 12px;
+}
+.success-message {
+    background: #ddf1d6;
+
+}
+.error-message {
+    background: #fae0e1;
+}
+
+
