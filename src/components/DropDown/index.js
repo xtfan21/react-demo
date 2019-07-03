@@ -31,6 +31,10 @@ export default class DropDown extends React.Component {
         this.props.changeValue(val);
     }
 
+    onMoseEnterFn() {
+        console.log('111');
+    }
+
 
     render() {
         const { data } = this.props;
@@ -44,6 +48,8 @@ export default class DropDown extends React.Component {
                 <h2 ref={el => this.callBackRef= el}>h2</h2>
                 <h3 ref={this.createRef}>h3</h3>
                 <Fnbutton ref={this.btnRef}>提交</Fnbutton>
+                <div onMouseEnter={this.onMoseEnterFn}>按钮</div>
+
             </div>
         )
     }
