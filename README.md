@@ -1,5 +1,4 @@
-## react-demo
-demo 演示
+## react-demo 演示
 
 ## How to use
    - git clone https://github.com/xtfan21/react-demo.git
