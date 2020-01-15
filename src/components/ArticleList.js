@@ -1,5 +1,7 @@
 import React from 'react';
+import ThemedButton from './ThemedButton';
 
+export const TemeContext = React.createContext('light');
 class ArticleList extends React.Component {
 
     itemBox() {
@@ -16,15 +18,36 @@ class ArticleList extends React.Component {
         )
     }
 
+
     render() {
         return (
             <div>
                 <ul>
                     { this.itemBox() }
                 </ul>
+                <TemeContext.Provider value='dark'>
+                    <Toolbar />
+                </TemeContext.Provider>
             </div>
         )
     }
+}
+
+// class ThemedButton extends React.Component {
+//     static contextType = TemeContext;
+//
+//     render() {
+//         console.log(this, TemeContext, '====');
+//         return <button theme={this.context}></button>
+//     }
+// }
+
+function Toolbar() {
+    return (
+        <div>
+            <ThemedButton />
+        </div>
+    )
 }
 
 
